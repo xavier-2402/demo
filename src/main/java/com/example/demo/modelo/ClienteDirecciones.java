@@ -36,15 +36,15 @@ public class ClienteDirecciones {
      private Cliente cliente;
       
       //clientedirecciones-direccion
-     // @JsonBackReference
-     //@JoinColumn(name="idDirecciones")
-      //@ManyToOne(fetch=FetchType.LAZY)
-     //private Direccion direccion;
+      @JsonBackReference
+     @JoinColumn(name="idDirecciones")
+     @ManyToOne(fetch=FetchType.LAZY)
+     private Direccion direccion;
       
       //servicio-clientedirecciones
       
-    //@OneToOne(mappedBy = "clientedirecciones", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    //private Servicio servicio;
+//    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+//    private Servicio servicio;
 
     public Long getIdClienteDireccion() {
         return idClienteDireccion;

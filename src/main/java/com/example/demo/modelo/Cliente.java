@@ -42,6 +42,10 @@ public class Cliente implements Serializable{
     @OneToMany(mappedBy = "cliente",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Tarjeta>tarjeta;
 
+@JsonManagedReference
+    @OneToMany(mappedBy = "cliente",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Cliente>cliente = new ArrayList<>();
+
               
     public Long getIdCliente() {
         return idCliente;

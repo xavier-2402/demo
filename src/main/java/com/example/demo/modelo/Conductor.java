@@ -36,7 +36,14 @@ public class Conductor implements Serializable{
     @ManyToOne(fetch=FetchType.LAZY)
     private Persona persona;
     
-   
+    @JsonManagedReference
+    @OneToMany( fetch=FetchType.LAZY)
+	private List<Vehiculo>vehiculo = new ArrayList<>();
+
+   //conductor-direccion
+    @OneToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="idDirecciones")
+    private Direccion direccion;
         
     
 

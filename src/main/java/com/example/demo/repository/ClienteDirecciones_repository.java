@@ -5,7 +5,6 @@
  */
 package com.example.demo.repository;
 
-
 import com.example.demo.modelo.ClienteDirecciones;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author Jessica Alvarez
  */
 @Repository
-public interface ClienteDirecciones_repository extends JpaRepository<ClienteDirecciones,Long> {
+public interface ClienteDirecciones_repository extends JpaRepository<ClienteDirecciones, Long> {
     
 }

@@ -28,6 +28,8 @@ public class Persona implements Serializable {
     private Long idPersona;
     private String cedula;
     private String nombre;
+    private String usuario;
+    private String contrasenia;
     private String apellido;
     private String direccion;
     private String telefono;
@@ -36,6 +38,24 @@ public class Persona implements Serializable {
     @OneToMany(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Persona>persona = new ArrayList<>();
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    
+    
     public Long getIdPersona() {
         return idPersona;
     }

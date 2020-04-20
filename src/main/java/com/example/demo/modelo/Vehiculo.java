@@ -34,8 +34,7 @@ public class Vehiculo implements Serializable{
     private String v_color;
     private String v_marca;
     private String v_anio;
-    private String v_largo;
-    private String v_ancho;
+    
     
 
      //vehiculo_conductor
@@ -101,22 +100,5 @@ public class Vehiculo implements Serializable{
     public void setV_anio(String v_anio) {
         this.v_anio = v_anio;
     }
-
-    public String getV_largo() {
-        return v_largo;
-    }
-
-    public void setV_largo(String v_largo) {
-        this.v_largo = v_largo;
-    }
-
-    public String getV_ancho() {
-        return v_ancho;
-    }
-
-    public void setV_ancho(String v_ancho) {
-        this.v_ancho = v_ancho;
-    }
-    
-    
+  
 }

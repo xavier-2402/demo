@@ -28,7 +28,7 @@ public class Persona implements Serializable {
     private Long idPersona;
     private String cedula;
     private String nombre;
-    private String usuario;
+    private String correo;
     private String contrasenia;
     private String apellido;
     private String direccion;
@@ -36,14 +36,23 @@ public class Persona implements Serializable {
     
     @JsonManagedReference
     @OneToMany(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Persona>persona = new ArrayList<>();
+	private List<Persona> persona = new ArrayList<>();
 
-    public String getUsuario() {
-        return usuario;
+    public List<Persona> getPersona() {
+        return persona;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setPersona(List<Persona> persona) {
+        this.persona = persona;
+    }
+    
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getContrasenia() {

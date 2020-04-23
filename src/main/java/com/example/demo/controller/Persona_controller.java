@@ -5,7 +5,7 @@
  */
 package com.example.demo.controller;
 
-;
+
 import com.example.demo.modelo.Persona;
 import com.example.demo.repository.Persona_repository;
 

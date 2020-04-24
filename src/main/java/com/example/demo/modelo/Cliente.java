@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -37,14 +38,15 @@ public class Cliente implements Serializable{
     @ManyToOne(fetch=FetchType.LAZY)
     private Persona persona;
  
-@JsonManagedReference
-    //refencia cliente-tarjeta
-    @OneToMany(mappedBy = "cliente",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    private List<Tarjeta>tarjeta;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idTarjeta", nullable = false)
+    private Tarjeta tarjeta;
+    
+   
 
 @JsonManagedReference
     @OneToMany(mappedBy = "cliente",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Cliente>cliente = new ArrayList<>();
+	private List<ClienteDirecciones>clientedirecciones = new ArrayList<>();
 
               
     public Long getIdCliente() {

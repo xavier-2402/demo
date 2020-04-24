@@ -35,11 +35,11 @@ public class Servicio {
      private Vehiculo vehiculo;
     
 //    servicio-cliente_direcciones
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "idClienteDireccion", nullable = false)
-//    private ClienteDirecciones cliente_direcciones;
-//    
-//   
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "idClienteDireccion", nullable = false)
+    private ClienteDirecciones cliente_direcciones;
+    
+   
 
     public Long getIdServicio() {
         return idServicio;

@@ -17,12 +17,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jessica Alvarez
  */
 @Entity
+@Table(name = "clientedirecciones")
 public class ClienteDirecciones {
      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,9 +44,10 @@ public class ClienteDirecciones {
      private Direccion direccion;
       
       //servicio-clientedirecciones
-      
-//    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-//    private Servicio servicio;
+      //https://www.baeldung.com/jpa-one-to-one
+    @OneToOne(mappedBy = "clientedirecciones",fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, optional = false)
+    private Servicio servicio;
 
     public Long getIdClienteDireccion() {
         return idClienteDireccion;

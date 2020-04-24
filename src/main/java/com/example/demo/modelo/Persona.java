@@ -36,15 +36,13 @@ public class Persona implements Serializable {
     
     @JsonManagedReference
     @OneToMany(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Persona> persona = new ArrayList<>();
+	private List<Cliente> cliente = new ArrayList<>();
 
-    public List<Persona> getPersona() {
-        return persona;
-    }
+   
+     @JsonManagedReference
+    @OneToMany(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Conductor> conductor = new ArrayList<>();
 
-    public void setPersona(List<Persona> persona) {
-        this.persona = persona;
-    }
     
 
     public String getCorreo() {

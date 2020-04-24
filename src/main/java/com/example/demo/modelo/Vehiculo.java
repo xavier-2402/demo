@@ -45,7 +45,7 @@ public class Vehiculo implements Serializable{
 
     @JsonManagedReference
     @OneToMany(mappedBy = "vehiculo",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Vehiculo>vehiculo = new ArrayList<>(); 
+	private List<Servicio>servicio = new ArrayList<>(); 
      
       @JsonBackReference
     @JoinColumn(name="idTarifa")

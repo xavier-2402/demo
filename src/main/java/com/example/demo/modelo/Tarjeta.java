@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -34,10 +35,9 @@ public class Tarjeta implements Serializable {
      private String fechaCaducidad;
      private String codSeguridad;
      
-  @JsonBackReference
-     @JoinColumn(name="idCliente")
-      @ManyToOne(fetch=FetchType.LAZY)
-        private Cliente cliente;
+     
+    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private Cliente cliente;
 
     public Long getIdTarjeta() {
         return idTarjeta;

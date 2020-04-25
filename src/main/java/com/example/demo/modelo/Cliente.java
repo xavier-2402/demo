@@ -33,9 +33,8 @@ public class Cliente implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCliente;
      
-    @JsonBackReference
+    @OneToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="idPersona")
-    @ManyToOne(fetch=FetchType.LAZY)
     private Persona persona;
  
     @OneToOne(fetch = FetchType.LAZY)
@@ -46,7 +45,7 @@ public class Cliente implements Serializable{
 
 @JsonManagedReference
     @OneToMany(mappedBy = "cliente",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<ClienteDirecciones>clientedirecciones = new ArrayList<>();
+	private List<Servicio>servicio = new ArrayList<>();
 
               
     public Long getIdCliente() {

@@ -5,10 +5,10 @@
  */
 package com.example.demo.controller;
 
-
-import com.example.demo.modelo.ClienteDirecciones;
-import com.example.demo.repository.ClienteDirecciones_repository;
-
+import com.example.demo.modelo.Servicio;
+import com.example.demo.modelo.Ubicacion;
+import com.example.demo.repository.Servicio_repository;
+import com.example.demo.repository.Ubicacion_repository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,32 +25,34 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Jessica Alvarez
  */
 @RestController
-@RequestMapping("clientedirecciones")
-public class ClienteDirecciones_controller {
+@RequestMapping("ubicacion")
+public class Ubicacion_cotroller {
+    
     @Autowired
-	ClienteDirecciones_repository clientedireccion_repository;
-	
-	@GetMapping("")
+      Ubicacion_repository ubicacion_repository;
+    
+    @GetMapping("")
 	@CrossOrigin
-	public List<ClienteDirecciones> listar() {
-		return this.clientedireccion_repository.findAll();
+	public List<Ubicacion> listar() {
+		return this.ubicacion_repository.findAll();
 		
 	}
-	
-	@PostMapping("")
+
+        @PostMapping("")
 	@CrossOrigin
-	public ClienteDirecciones guardar(@RequestBody ClienteDirecciones cd) {
-		return this.clientedireccion_repository.save(cd);
+	public Ubicacion guardar(@RequestBody Ubicacion c) {
+		return this.ubicacion_repository.save(c);
 	}
-        @GetMapping("}")
+    
+        @GetMapping("/{idUbicacion}")
 	@CrossOrigin
-	public ClienteDirecciones recuperar(@PathVariable Long idClienteDireccion) {
-		return this.clientedireccion_repository.findById(idClienteDireccion).get();
+	public Ubicacion recuperar(@PathVariable Long idUbicacion) {
+		return this.ubicacion_repository.findById(idUbicacion).get();
 	}
-	@DeleteMapping("")
+	@DeleteMapping("/{idUbicacion}")
 	@CrossOrigin
-	public void eliminar(@PathVariable  Long idClienteDireccion) {
-		 this.clientedireccion_repository.deleteById(idClienteDireccion);
+	public void eliminar(@PathVariable  Long idUbicacion) {
+		this.ubicacion_repository.deleteById(idUbicacion);
 	}
-	
+    
 }

@@ -1,4 +1,5 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -31,20 +32,15 @@ public class Conductor implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idConductor;
     
-    @JsonBackReference
+    @OneToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="idPersona")
-    @ManyToOne(fetch=FetchType.LAZY)
     private Persona persona;
     
     @JsonManagedReference
     @OneToMany( fetch=FetchType.LAZY)
-	private List<Vehiculo>vehiculo = new ArrayList<>();
+    private List<Vehiculo>vehiculo ;
 
-   //conductor-direccion
-    @OneToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="idDirecciones")
-    private Direccion direccion;
-        
+  
     
 
     public Long getIdConductor() {

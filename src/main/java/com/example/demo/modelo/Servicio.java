@@ -6,7 +6,11 @@
 package com.example.demo.modelo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -22,7 +27,7 @@ import javax.persistence.OneToOne;
  * @author Jessica Alvarez
  */
 @Entity
-public class Servicio {
+public class Servicio implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idServicio;
@@ -34,12 +39,15 @@ public class Servicio {
       @ManyToOne(fetch=FetchType.LAZY)
      private Vehiculo vehiculo;
     
-//    servicio-cliente_direcciones
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idClienteDireccion", nullable = false)
-    private ClienteDirecciones cliente_direcciones;
-    
-   
+     @JsonBackReference
+     @JoinColumn(name="idCliente")
+      @ManyToOne(fetch=FetchType.LAZY)
+     private Cliente cliente;
+      
+     
+     @JsonManagedReference
+    @OneToMany(mappedBy = "servicio",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Ubicacion> ubicacion = new ArrayList<>();
 
     public Long getIdServicio() {
         return idServicio;
@@ -57,7 +65,5 @@ public class Servicio {
         this.fecha_servicio = fecha_servicio;
     }
     
-    @OneToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="idClienteDireccion")
-    private ClienteDirecciones clientedireccion;
+   
 }

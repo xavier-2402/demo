@@ -15,7 +15,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -30,19 +32,24 @@ public class Persona implements Serializable {
     private String nombre;
     private String correo;
     private String contrasenia;
+    
     private String apellido;
-    private String direccion;
     private String telefono;
     
-    @JsonManagedReference
-    @OneToMany(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Cliente> cliente = new ArrayList<>();
+   
+    @OneToOne(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private Cliente cliente;
 
    
-     @JsonManagedReference
-    @OneToMany(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Conductor> conductor = new ArrayList<>();
+     
+    @OneToOne(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private Conductor conductor ;
 
+      //conductor-direccion
+    @OneToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name="idDirecciones")
+    private Direccion direccion;
+        
     
 
     public String getCorreo() {
@@ -93,14 +100,6 @@ public class Persona implements Serializable {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public String getTelefono() {

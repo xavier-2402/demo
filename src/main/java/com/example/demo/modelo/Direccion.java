@@ -36,16 +36,16 @@ public class Direccion  implements Serializable
         private String barrio_dir;
         private String calle_dir;
         
-        @JsonManagedReference
-        @OneToMany(mappedBy = "direccion", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-        private List<ClienteDirecciones> cliente_direcciones;
-        
+//        @JsonManagedReference
+//        @OneToMany(mappedBy = "direccion", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+//        private List<ClienteDirecciones> cliente_direcciones;
+//        
         
  
          
         //conductor-direccion
         @OneToOne(mappedBy = "direccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-        private Conductor conductor;
+        private Persona persona;
 
     public Long getIdDirecciones() {
         return idDirecciones;

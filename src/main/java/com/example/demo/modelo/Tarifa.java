@@ -39,6 +39,9 @@ public class Tarifa {
     private double valor;
     private String tarifa_descripcion;
     
+    @OneToMany(mappedBy = "tarifa", cascade = CascadeType.ALL)
+    private List<Vehiculo> vehiculo= new ArrayList();
+    
 
     public Long getIdTarifa() {
         return idTarifa;

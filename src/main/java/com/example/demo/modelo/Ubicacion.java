@@ -38,9 +38,9 @@ public class Ubicacion implements Serializable{
     private String u_latitud;
     private String u_longitud;
     
-    @JsonBackReference
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idServicio")
-    @ManyToOne(fetch=FetchType.LAZY)
     private Servicio servicio;
     
     

@@ -51,6 +51,7 @@ public class Cliente implements Serializable{
     @JoinColumn(name="idTarjeta")
     private Tarjeta tarjeta;
      
-    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Servicio> servicios = new ArrayList();
     
 }

@@ -45,9 +45,10 @@ public class Conductor implements Serializable{
     @OneToOne(cascade =CascadeType.ALL)
     @JoinColumn(name="idPersona")
     private Persona persona;
+    
+    @OneToMany(mappedBy = "conductor", cascade = CascadeType.ALL)
+    private List<Vehiculo> vehiculo= new ArrayList();
 
-//    @OneToMany(mappedBy = "conductor", cascade = CascadeType.ALL)
-//    private List<Vehiculo> vehiculo= new ArrayList();
-        
+
     
 }

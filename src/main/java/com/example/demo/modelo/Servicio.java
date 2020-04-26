@@ -43,37 +43,15 @@ public class Servicio implements Serializable{
     private Long idServicio;
     private Date fecha_servicio;
     
-    //servicio-vehiculo
-    @JsonBackReference
-     @JoinColumn(name="idVehiculo")
-      @ManyToOne(fetch=FetchType.LAZY)
-     private Vehiculo vehiculo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idCliente")
+    private Cliente cliente;
     
-     @JsonBackReference
-     @JoinColumn(name="idCliente")
-      @ManyToOne(fetch=FetchType.LAZY)
-     private Cliente cliente;
-      
-     
-     @JsonManagedReference
-    @OneToMany(mappedBy = "servicio",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Ubicacion> ubicacion = new ArrayList<>();
-
-    public Long getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(Long idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    public Date getFecha_servicio() {
-        return fecha_servicio;
-    }
-
-    public void setFecha_servicio(Date fecha_servicio) {
-        this.fecha_servicio = fecha_servicio;
-    }
+    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    private List<Ubicacion> ubicacion= new ArrayList();
     
+     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idVehiculo")
+    private Vehiculo vehiculo;
    
 }

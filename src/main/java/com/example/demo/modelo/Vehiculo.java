@@ -45,10 +45,18 @@ public class Vehiculo implements Serializable{
     private String v_marca;
     private String v_anio;
     
-//   @ManyToOne(fetch = FetchType.LAZY)
-//   @JoinColumn(name="idConductor")
-//    private Conductor conductor;
-//    
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name="idConductor")
+    private Conductor conductor;
+   
+      @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name="idTarifa")
+    private Tarifa tarifa;
+      
+      @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL)
+    private List<Servicio> servicio= new ArrayList();
+    
+    
     
     public Long getIdVehiculo() {
         return idVehiculo;

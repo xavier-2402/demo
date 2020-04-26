@@ -44,6 +44,7 @@ public class Vehiculo implements Serializable{
     private String v_color;
     private String v_marca;
     private String v_anio;
+    private String v_placa;
     
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name="idConductor")
@@ -105,5 +106,13 @@ public class Vehiculo implements Serializable{
     public void setV_anio(String v_anio) {
         this.v_anio = v_anio;
     }
-  
+    
+    public String getV_placa() {
+        return v_placa;
+    }
+
+    public void setV_placa(String v_placa) {
+        this.v_placa = v_placa;
+    }
+    
 }

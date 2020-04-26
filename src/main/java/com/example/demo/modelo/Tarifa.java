@@ -15,12 +15,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Jessica Alvarez
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter()
+@Setter()
 public class Tarifa {
     
     @Id
@@ -29,9 +39,6 @@ public class Tarifa {
     private double valor;
     private String tarifa_descripcion;
     
-    @JsonManagedReference
-    @OneToMany(mappedBy = "tarifa",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Tarifa>tarifa = new ArrayList<>();
 
     public Long getIdTarifa() {
         return idTarifa;

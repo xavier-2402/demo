@@ -21,39 +21,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Jessica Alvarez
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter()
+@Setter()
 public class Conductor implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idConductor;
     
-    @OneToOne(fetch= FetchType.LAZY)
+    @OneToOne(cascade =CascadeType.ALL)
     @JoinColumn(name="idPersona")
     private Persona persona;
-    
-    @JsonManagedReference
-    @OneToMany( fetch=FetchType.LAZY)
-    private List<Vehiculo>vehiculo ;
 
-  
-    
-
-    public Long getIdConductor() {
-        return idConductor;
-    }
-
-    public void setIdConductor(Long idConductor) {
-        this.idConductor = idConductor;
-    }
-
-  
-    
-    
-    
+//    @OneToMany(mappedBy = "conductor", cascade = CascadeType.ALL)
+//    private List<Vehiculo> vehiculo= new ArrayList();
+        
     
 }

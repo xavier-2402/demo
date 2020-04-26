@@ -18,17 +18,27 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Jessica Alvarez
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter()
+@Setter()
 public class Direccion  implements Serializable
 {
        @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idDirecciones;
+	private Long idDireccion;
        
         private String provincia_dir;
         private String canton_dir;
@@ -36,65 +46,6 @@ public class Direccion  implements Serializable
         private String barrio_dir;
         private String calle_dir;
         
-//        @JsonManagedReference
-//        @OneToMany(mappedBy = "direccion", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-//        private List<ClienteDirecciones> cliente_direcciones;
-//        
-        
- 
-         
-        //conductor-direccion
-        @OneToOne(mappedBy = "direccion", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-        private Persona persona;
-
-    public Long getIdDirecciones() {
-        return idDirecciones;
-    }
-
-    public void setIdDirecciones(Long idClienteDirecciones) {
-        this.idDirecciones = idDirecciones;
-    }
-
-    public String getProvincia_dir() {
-        return provincia_dir;
-    }
-
-    public void setProvincia_dir(String provincia_dir) {
-        this.provincia_dir = provincia_dir;
-    }
-
-    public String getCanton_dir() {
-        return canton_dir;
-    }
-
-    public void setCanton_dir(String canton_dir) {
-        this.canton_dir = canton_dir;
-    }
-
-    public String getParroquia_dir() {
-        return parroquia_dir;
-    }
-
-    public void setParroquia_dir(String parroquia_dir) {
-        this.parroquia_dir = parroquia_dir;
-    }
-
-    public String getBarrio_dir() {
-        return barrio_dir;
-    }
-
-    public void setBarrio_dir(String barrio_dir) {
-        this.barrio_dir = barrio_dir;
-    }
-
-    public String getCalle_dir() {
-        return calle_dir;
-    }
-
-    public void setCalle_dir(String calle_dir) {
-        this.calle_dir = calle_dir;
-    }
-
- 
-        
+       
+       
 }

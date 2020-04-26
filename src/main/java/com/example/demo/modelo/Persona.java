@@ -18,12 +18,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Jessica Alvarez
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter()
+@Setter()
 public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,83 +42,12 @@ public class Persona implements Serializable {
     private String nombre;
     private String correo;
     private String contrasenia;
-    
     private String apellido;
     private String telefono;
     
-   
-    @OneToOne(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Cliente cliente;
-
-   
-     
-    @OneToOne(mappedBy = "persona",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Conductor conductor ;
-
-      //conductor-direccion
-    @OneToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name="idDirecciones")
+    @OneToOne(cascade =CascadeType.ALL)
+    @JoinColumn(name="idDireccion")
     private Direccion direccion;
-        
     
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getContrasenia() {
-        return contrasenia;
-    }
-
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
-    
-    
-    public Long getIdPersona() {
-        return idPersona;
-    }
-
-    public void setIdPersona(Long idPersona) {
-        this.idPersona = idPersona;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-          
+   
 }

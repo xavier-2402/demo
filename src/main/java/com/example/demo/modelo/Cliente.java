@@ -20,47 +20,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Jessica Alvarez
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter()
+@Setter()
 public class Cliente implements Serializable{
     
     
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCliente;
      
-    @OneToOne(fetch= FetchType.LAZY)
+    @OneToOne(cascade =CascadeType.ALL)
     @JoinColumn(name="idPersona")
     private Persona persona;
- 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTarjeta", nullable = false)
+    
+    @OneToOne(cascade =CascadeType.ALL)
+    @JoinColumn(name="idTarjeta")
     private Tarjeta tarjeta;
-    
-   
-
-@JsonManagedReference
-    @OneToMany(mappedBy = "cliente",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Servicio>servicio = new ArrayList<>();
-
-              
-    public Long getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Long idCliente) {
-        this.idCliente = idCliente;
-    }
-
-   
-    
-
-   
-    
      
     
     

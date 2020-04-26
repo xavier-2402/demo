@@ -19,12 +19,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author Jessica Alvarez
  */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter()
+@Setter()
 public class Vehiculo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,23 +45,10 @@ public class Vehiculo implements Serializable{
     private String v_marca;
     private String v_anio;
     
-    
-
-     //vehiculo_conductor
-     @JsonBackReference
-     @JoinColumn(name="idConductor")
-     @ManyToOne(fetch=FetchType.LAZY)
-     private Conductor conductor;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "vehiculo",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Servicio>servicio = new ArrayList<>(); 
-     
-      @JsonBackReference
-    @JoinColumn(name="idTarifa")
-    @ManyToOne(fetch=FetchType.LAZY)
-    private Tarifa  tarifa;
-    
+//   @ManyToOne(fetch = FetchType.LAZY)
+//   @JoinColumn(name="idConductor")
+//    private Conductor conductor;
+//    
     
     public Long getIdVehiculo() {
         return idVehiculo;

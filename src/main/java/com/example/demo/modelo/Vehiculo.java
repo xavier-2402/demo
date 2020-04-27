@@ -45,6 +45,7 @@ public class Vehiculo implements Serializable{
     private String v_marca;
     private String v_anio;
     private String v_placa;
+    private String nombre_propietario;
     
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name="idConductor")
